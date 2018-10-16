@@ -1,0 +1,14 @@
+stages:
+- name: compile
+  steps:
+  - runScriptConfig:
+      image: node:latest
+      shellScript: echo "building"
+- name: bake
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: my2048
+      registry: 127.0.0.1:34067
+timeout: 60
